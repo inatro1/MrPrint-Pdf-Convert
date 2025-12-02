@@ -1,2 +1,3 @@
-html,body,#root{height:100%; margin:0; font-family: Arial, sans-serif;}
-button{margin-left:8px;}
+:root{--bg:#f7f7fb}
+html,body,#root{height:100%; margin:0; font-family: Inter, Arial, sans-serif; background:var(--bg);}
+button{cursor:pointer}
