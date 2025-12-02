@@ -1,20 +1,24 @@
-# TEO PRINT CONVERT
+# TEO PRINT CONVERT — Frontend (Vite + React)
 
-Projeto completo: frontend React + backend Node/Express + worker Bull + MongoDB + Redis.
-Converte PDFs para DOCX usando CloudConvert API.
+### Instruções rápidas
 
-## Passos rápidos (local usando Docker)
+1. Instalar dependências:
+   npm install
 
-1. Copie `backend/.env.example` para `backend/.env` e preencha `CLOUDCONVERT_API_KEY` e `JWT_SECRET`.
-2. Execute:
-   ```bash
-   docker-compose up --build
-   ```
-3. Abra o frontend (usar `npm` dev server) ou sirva a pasta `frontend` com Vite:
-   - Entre em `frontend`, instale: `npm install`
-   - Rode: `npm run dev`
-   - Aplique `VITE_API_URL` se necessário para apontar para `http://localhost:4000`
+2. Definir variável de ambiente (local):
+   - Crie um ficheiro `.env` na raiz com:
+     VITE_API_URL=http://localhost:4000
+   - No Netlify, crie a variável `VITE_API_URL` apontando para o backend (ex: https://seu-backend.onrender.com)
 
-## Notas
-- Em produção proteja a API com HTTPS e armazene segredos num secrets manager.
-- CloudConvert é um serviço pago — ver quotas e limites.
+3. Rodar em desenvolvimento:
+   npm run dev
+
+4. Build para produção:
+   npm run build
+
+5. Testar preview:
+   npm run preview
+
+Observações:
+- O build do Vite gera a pasta `dist` por padrão.
+- Em Netlify use Base directory = pasta do frontend e Publish directory = dist.
