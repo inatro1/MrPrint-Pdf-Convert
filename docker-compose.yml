@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  backend:
+    build: ./backend
+    ports:
+      - '4000:4000'
+    env_file: ./backend/.env.example
+    depends_on:
+      - mongo
+      - redis
+    volumes:
+      - ./storage:/data/storage
+  worker:
+    build: ./backend
+    command: node src/worker.js
+    env_file: ./backend/.env.example
+    depends_on:
+      - mongo
+      - redis
+    volumes:
+      - ./storage:/data/storage
+  mongo:
+    image: mongo:6
+    restart: always
+    volumes:
+      - mongo_data:/data/db
+  redis:
+    image: redis:7
+    restart: always
+volumes:
+  mongo_data:
